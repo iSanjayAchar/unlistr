@@ -2,7 +2,7 @@ import React from "react";
 
 function Sidebar() {
     return (
-        <div className="border-r-2 border-black bg-[#95D2B3]">
+        <div className="border-r-2 border-black bg-gradient-to-b from-rose-100 to-teal-100">
             <div className="flex flex-col h-full">
                 <div className="p-10 rounded-[20px]">
                     <div className="flex gap-2 items-start">
