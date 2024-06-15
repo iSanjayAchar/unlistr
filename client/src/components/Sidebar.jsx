@@ -37,11 +37,22 @@ function Sidebar() {
                         </button>
                     </div>
                 </div>
-                <div className="mt-auto py-5 p-10 flex cursor-pointer gap-4 border-t-2 border-black" type="button" onClick={() => user.toggleLoginModal()}>
+                <div className="mt-auto py-5 p-10 flex cursor-pointer gap-4 border-t-2 border-black" type="button" onClick={() => !user.user && user.toggleLoginModal()}>
                     <img src="https://api.dicebear.com/8.x/big-smile/svg?seed=Molly" alt="Profile" className="w-[48px] h-[48px] bg-white rounded-[50%] p-1" />
                     <h1 className="text-2xl font-bold">
                         Hola!
-                        <small className="block text-sm -mt-[3px] text-gray-700">Let's sign you up!</small>
+                        {
+                            !user.user && (
+                                <small className="block text-sm -mt-[3px] text-gray-700">Let's sign you up!</small>
+                            )
+                        }
+                        {
+                            user.user && (
+                                <small className="block text-sm -mt-[3px] text-gray-700">
+                                    {user.user.email}
+                                </small>
+                            )
+                        }
                     </h1>
                 </div>
             </div>
