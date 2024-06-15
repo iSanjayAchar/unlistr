@@ -131,7 +131,6 @@ function Login() {
                                                     {type === "login" && "Register"}
                                                 </span>
                                             </p>
-                                            {JSON.stringify(formik.values)}
                                         </div>
                                     </form>
                                 )

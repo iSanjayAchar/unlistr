@@ -19,6 +19,10 @@ function Sidebar() {
     }
 
     const create = async (task, helper) => {
+        if (!user.user) {
+            return user.toggleLoginModal();
+        }
+        
         try {
             await httpClient.post("/task", {
                 ...task,
