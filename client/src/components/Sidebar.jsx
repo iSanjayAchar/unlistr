@@ -18,7 +18,7 @@ function Sidebar() {
                         <div className="flex justify-center gap-5">
                             <input
                                 type="text"
-                                className="border-2 border-black rounded-none text-3xl placeholder:text-xl px-5 py-3 focus:border-transparent !outline-none active:border-2 active:border-black focus:border-2 focus:border-black focus:shadow-[5px_5px_0px_0px_#000] transition ease-in w-full"
+                                className="border-2 border-black rounded-none text-3xl placeholder:text-xl px-5 py-3 shadow-none !outline-none active:border-2 active:border-black focus:border-2 focus:border-black focus:shadow-[5px_5px_0px_0px_#000] transition ease-in w-full"
                                 placeholder="What's gotta get done?"
                             />
                         </div>
