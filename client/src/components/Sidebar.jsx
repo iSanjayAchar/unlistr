@@ -112,8 +112,8 @@ function Sidebar() {
                     </div>
                     {
                         user.user && (
-                            <div className="border-l-2 border-black ml-auto pl-4" type="button" onClick={user.logout}>
-                                <img src="/assets/logout.svg" alt="" className="w-[48px] h-[48px]" />
+                            <div className="border-l-2 border-black ml-auto pl-4 self-center" type="button" onClick={user.logout}>
+                                <img src="/assets/logout.svg" alt="" className="w-[40px] h-[40px]" />
                             </div>
                         )
                     }

@@ -3,7 +3,7 @@ import httpClient from "../utils/http-client";
 import { AppContext } from "../context";
 
 function Task({ index, tid, title, status, description, created_at }) {
-    const {refreshTasks} = React.useContext(AppContext);
+    const { refreshTasks } = React.useContext(AppContext);
     const [isActive, setIsActive] = React.useState(false);
 
     const taskStage = (stage = status) => {
@@ -35,6 +35,15 @@ function Task({ index, tid, title, status, description, created_at }) {
         }
     }
 
+    const deleteTask = async () => {
+        try {
+            await httpClient.delete(`/task/${tid}`);
+            await refreshTasks();
+        } catch (err) {
+            console.error(err);
+        }        
+    }
+
     return (
         <div className="flex gap-3 cursor-pointer px-2 py-5 border-2 border-gray-200 hover:border-black transition ease-linear" onMouseEnter={() => setIsActive(true)} onMouseLeave={() => setIsActive(false)}>
             <div className="border-r-2 border-r-gray-200 px-2">
@@ -42,10 +51,15 @@ function Task({ index, tid, title, status, description, created_at }) {
                     {index + 1}.
                 </h1>
             </div>
-            <div className="flex flex-col">
-                <h6 className="text-xl font-bold">
-                    {title}
-                </h6>
+            <div className="flex flex-col w-full">
+                <div className="flex w-full items-center gap-2 justify-between">
+                    <h6 className="text-xl font-bold">
+                        {title}
+                    </h6>
+                    <button className="bg-trasparent border-2 border-transparent px-1 py-[.1rem] font-bold hover:bg-red-100 hover:border-black hover:shadow-[5px_5px_0px_0px_#F05252] transition ease-in mr-2" onClick={deleteTask}>
+                        <img src="/assets/delete.svg" alt="" />
+                    </button>
+                </div>
                 <p>
                     {description || "No description available"}
                 </p>

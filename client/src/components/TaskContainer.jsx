@@ -19,7 +19,7 @@ function TaskContainer() {
     return (
         <div className="p-10 flex flex-col">
             <div className="flex items-center justify-between mb-5">
-                <h1 className="text-3xl font-bold">Tasks</h1>
+                <h1 className="text-3xl font-bold">Tasks.</h1>
                 <div className="flex gap-2 items-center animate__animated animate__backInRight animate__fast">
                     <img
                         src="/assets/filter.svg"
@@ -62,7 +62,7 @@ function TaskContainer() {
                 ))}
                 {
                     filteredTasks.length === 0 && (
-                        <div className="flex w-full h-full items-center flex-col mt-16">
+                        <div className="flex w-full h-full items-center flex-col mt-16 animate__animated animate__backInUp animate__faster">
                             <img src="/assets/filter-empty.svg" alt="Clear filter" className="w-[250px] h-[250px]" />
                             <h1 className="text-3xl font-bold mt-3">Narrowed It Down!</h1>
                             <p className="text-base text-black opacity-70 max-w-[400px] text-center mt-2">
