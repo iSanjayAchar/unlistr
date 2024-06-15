@@ -9,9 +9,12 @@ const task = {
         },
         status: {
             enum: ["todo", "in-progress", "done"],
+        },
+        created_at: {
+            type: "number"
         }
     },
-    required: ["title", "description", "status"],
+    required: ["title", "status"],
     additionalProperties: false,
 };
 
