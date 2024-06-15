@@ -22,12 +22,12 @@ function Sidebar() {
         if (!user.user) {
             return user.toggleLoginModal();
         }
-        
+
         try {
             await httpClient.post("/task", {
                 ...task,
                 status: "todo"
-            }); 
+            });
 
             await refreshTasks();
             helper.resetForm();
@@ -80,7 +80,7 @@ function Sidebar() {
                                             onChange={formik.handleChange}
                                             value={formik.values.description}
                                         />
-                                        
+
 
                                         <button className="bg-white border-2 border-black px-5 py-5 font-bold hover:shadow-[5px_5px_0px_0px_#000] transition ease-in" type="submit">
                                             CREATE
@@ -92,22 +92,31 @@ function Sidebar() {
                     </Formik>
                 </div>
                 <div className="mt-auto py-5 p-10 flex cursor-pointer gap-4 border-t-2 border-black" type="button" onClick={() => !user.user && user.toggleLoginModal()}>
-                    <img src="https://api.dicebear.com/8.x/big-smile/svg?seed=Molly" alt="Profile" className="w-[48px] h-[48px] bg-white rounded-[50%] p-1" />
-                    <h1 className="text-2xl font-bold">
-                        Hola!
-                        {
-                            !user.user && (
-                                <small className="block text-sm -mt-[3px] text-gray-700">Let's sign you up!</small>
-                            )
-                        }
-                        {
-                            user.user && (
-                                <small className="block text-sm -mt-[3px] text-gray-700">
-                                    {user.user.email}
-                                </small>
-                            )
-                        }
-                    </h1>
+                    <div className="flex">
+                        <img src="https://api.dicebear.com/8.x/big-smile/svg?seed=Molly" alt="Profile" className="w-[48px] h-[48px] bg-white rounded-[50%] p-1" />
+                        <h1 className="text-2xl font-bold">
+                            Hola!
+                            {
+                                !user.user && (
+                                    <small className="block text-sm -mt-[3px] text-gray-700">Let's sign you up!</small>
+                                )
+                            }
+                            {
+                                user.user && (
+                                    <small className="block text-sm -mt-[3px] text-gray-700">
+                                        {user.user.email}
+                                    </small>
+                                )
+                            }
+                        </h1>
+                    </div>
+                    {
+                        user.user && (
+                            <div className="border-l-2 border-black ml-auto pl-4" type="button" onClick={user.logout}>
+                                <img src="/assets/logout.svg" alt="" className="w-[48px] h-[48px]" />
+                            </div>
+                        )
+                    }
                 </div>
             </div>
         </div>

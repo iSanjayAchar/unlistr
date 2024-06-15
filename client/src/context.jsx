@@ -7,6 +7,7 @@ const defaultContext = {
         setUser: () => null,
         toggleLoginModal: () => null,
         showLoginModal: false,
+        logout: () => null,
     },
     tasks: [],
     refreshTasks: async () => null,
@@ -34,10 +35,14 @@ function AppContextWrapper({children}) {
 
     /** Initial task */
     React.useEffect(() => {
+        if (user === null) {
+            return;
+        }
+        
         (async () => {
             await refreshTasks();
         })();
-    }, []);
+    }, [user]);
 
     React.useEffect(() => {
         const auth_token = window.localStorage.getItem("auth_token");
@@ -55,6 +60,11 @@ function AppContextWrapper({children}) {
                 setLoginModal(!showLoginModal);
             },
             showLoginModal,
+            logout: () => {
+                setUser(null);
+                setTasks([]);
+                setFilter(null);
+            }
         },
         tasks,
         refreshTasks,
