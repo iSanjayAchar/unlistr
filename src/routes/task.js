@@ -21,6 +21,7 @@ router.get("/", auth, async (req, res) => {
             title: task.document.title,
             description: task.document.description,
             status: task.document.status,
+            created_at: Date.now(),
         }));
 
         return response(200, tasks, res);
