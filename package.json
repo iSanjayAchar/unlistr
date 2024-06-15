@@ -1,7 +1,7 @@
 {
-  "name": "pesto",
+  "name": "unlistr",
   "version": "1.0.0",
-  "description": "Pesto: Take home assessment",
+  "description": "Unlistr: The only todo app you need",
   "main": "index.js",
   "scripts": {
     "start": "node .",
