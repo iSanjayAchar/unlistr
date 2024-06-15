@@ -1,8 +1,10 @@
 import React from "react";
 
 function Task({ i }) {
+    const [isActive, setIsActive] = React.useState(false);
+
     return (
-        <div className="flex gap-3 cursor-pointer px-2 py-5 border-2 border-gray-200 hover:border-black transition ease-linear" key={i}>
+        <div className="flex gap-3 cursor-pointer px-2 py-5 border-2 border-gray-200 hover:border-black transition ease-linear" key={i} onMouseEnter={() => setIsActive(true)} onMouseLeave={() => setIsActive(false)}>
             <div className="border-r-2 border-r-gray-200 px-2">
                 <h1 className="text-5xl text-center font-bold text-gray-500">
                     {i}.
@@ -18,13 +20,19 @@ function Task({ i }) {
                     <div className="bg-gray-200 px-2 py-1 border-2 text-sm rounded-sm font-bold border-gray-200 text-gray-500 hover:first-letter:border-gray-500 hover:border-gray-300 hover:text-black transition-all ease-linear">
                         Todo
                     </div>
-                    <div className="border-r-2 border-r-black"></div>
-                    <div className="bg-amber-200 px-2 py-1 border-2 text-sm rounded-sm font-bold border-amber-200 text-amber-700 hover:first-letter:border-amber-500 hover:border-amber-300 hover:text-amber-900 transition-all ease-linear">
-                        In Progress
-                    </div>
-                    <div className="bg-green-200 px-2 py-1 border-2 text-sm rounded-sm font-bold border-green-200 text-green-700 hover:first-letter:border-green-500 hover:border-green-300 hover:text-green-900 transition-all ease-linear">
-                        Complete
-                    </div>
+                    {
+                        isActive && (
+                            <>
+                                <div className="border-r-2 border-r-black animate__animated animate__backInLeft animate__faster"></div>
+                                <div className="bg-amber-200 px-2 py-1 border-2 text-sm rounded-sm font-bold border-amber-200 text-amber-700 hover:first-letter:border-amber-500 hover:border-amber-300 hover:text-amber-900 transition-all ease-linear animate__animated animate__backInLeft animate__fast">
+                                    In Progress
+                                </div>
+                                <div className="bg-green-200 px-2 py-1 border-2 text-sm rounded-sm font-bold border-green-200 text-green-700 hover:first-letter:border-green-500 hover:border-green-300 hover:text-green-900 transition-all ease-linear animate__animated animate__backInLeft animate__fast">
+                                    Complete
+                                </div>
+                            </>
+                        )
+                    }
                 </div>
             </div>
         </div>
