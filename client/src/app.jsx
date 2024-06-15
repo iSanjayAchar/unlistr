@@ -7,7 +7,9 @@ import Login from "./components/Login";
 function Unlistr() {
     return (
         <main className="flex h-screen">
-            <Sidebar />
+            <div className="w-[500px] h-screen">
+                <Sidebar />
+            </div>
             <div className="h-screen overflow-hidden w-full bg-[#F3F3F3]">
                 {/* <Empty /> */}
                 <TaskContainer />

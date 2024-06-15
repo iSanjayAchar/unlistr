@@ -1,20 +1,21 @@
 import React from "react";
 
-function Task({ i }) {
+function Task({ index, tid, title, status, description }) {
     const [isActive, setIsActive] = React.useState(false);
 
     return (
-        <div className="flex gap-3 cursor-pointer px-2 py-5 border-2 border-gray-200 hover:border-black transition ease-linear" key={i} onMouseEnter={() => setIsActive(true)} onMouseLeave={() => setIsActive(false)}>
+        <div className="flex gap-3 cursor-pointer px-2 py-5 border-2 border-gray-200 hover:border-black transition ease-linear" onMouseEnter={() => setIsActive(true)} onMouseLeave={() => setIsActive(false)}>
             <div className="border-r-2 border-r-gray-200 px-2">
                 <h1 className="text-5xl text-center font-bold text-gray-500">
-                    {i}.
+                    {index + 1}.
                 </h1>
             </div>
             <div className="flex flex-col">
-                <h6 className="text-xl font-bold">Do laundry!</h6>
+                <h6 className="text-xl font-bold">
+                    {title}
+                </h6>
                 <p>
-                    Collect clothes from laundry bag, pre-soak for an hour before
-                    putting them in washing machine
+                    {description || "No description available"}
                 </p>
                 <div className="flex mt-5 gap-3">
                     <div className="bg-gray-200 px-2 py-1 border-2 text-sm rounded-sm font-bold border-gray-200 text-gray-500 hover:first-letter:border-gray-500 hover:border-gray-300 hover:text-black transition-all ease-linear">

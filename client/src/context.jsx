@@ -1,4 +1,5 @@
 import React from "react";
+import httpClient from "./utils/http-client";
 
 const defaultContext = {
     user: {
@@ -6,13 +7,32 @@ const defaultContext = {
         setUser: () => null,
         toggleLoginModal: () => null,
         showLoginModal: false,
-    }
+    },
+    tasks: [],
+    refreshTasks: async () => null,
 }
 const AppContext = React.createContext(defaultContext);
 
 function AppContextWrapper({children}) {
     const [showLoginModal, setLoginModal] = React.useState(false);
     const [user, setUser] = React.useState(null);
+    const [tasks, setTasks] = React.useState([]);
+
+    const refreshTasks = async () => {
+        try {
+            const {data} = await httpClient.get("/task");
+            return setTasks(data.result);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    /** Initial task */
+    React.useEffect(() => {
+        (async () => {
+            await refreshTasks();
+        })();
+    }, []);
 
     React.useEffect(() => {
         const auth_token = window.localStorage.getItem("auth_token");
@@ -30,7 +50,9 @@ function AppContextWrapper({children}) {
                 setLoginModal(!showLoginModal);
             },
             showLoginModal,
-        }
+        },
+        tasks,
+        refreshTasks
     };
 
     return (

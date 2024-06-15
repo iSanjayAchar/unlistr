@@ -1,7 +1,10 @@
 import React from "react";
 import Task from "./Task";
+import { AppContext } from "../context";
 
 function TaskContainer() {
+    const {tasks} = React.useContext(AppContext);
+
     return (
         <div className="p-10 flex flex-col">
             <div className="flex items-center justify-between mb-5">
@@ -24,8 +27,8 @@ function TaskContainer() {
                 </div>
             </div>
             <div className="flex flex-col gap-5 max-h-screen pb-48 overflow-scroll no-scrollbar">
-                {[1, 2, 3, 5, 6, 7, 8, 9, 10].map((i) => (
-                    <Task key={i} i={i} />
+                {tasks.map((task, j) => (
+                    <Task key={task.tid} index={j} {...task} />
                 ))}
             </div>
             <div className="h-[80px] bg-gradient-to-b from-[#F3F3F3]/15 to-[#F3F3F3] mt-[-170px]" />
